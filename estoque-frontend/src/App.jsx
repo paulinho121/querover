@@ -6,6 +6,7 @@ import BuscaProduto from './components/BuscaProduto'
 import CadastroProduto from './components/CadastroProduto'
 import UploadPlanilha from './components/UploadPlanilha'
 import './App.css'
+import logo from './assets/logo.png' // Verifique se o caminho está correto
 
 function App() {
   const [activeTab, setActiveTab] = useState('busca')
@@ -16,7 +17,12 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <Package className="h-8 w-8 text-blue-600" />
+              {/* Adicione um estilo mínimo de tamanho e object-contain */}
+              <img 
+                src={logo} 
+                alt="Logo" 
+                className="h-10 w-auto max-h-10 object-contain" 
+              />
               <h1 className="text-2xl font-bold text-gray-900">
                 Sistema de Estoque
               </h1>
@@ -28,6 +34,7 @@ function App() {
         </div>
       </header>
 
+      {/* Resto do código permanece igual */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-3 lg:w-auto lg:grid-cols-3">
