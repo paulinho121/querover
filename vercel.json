@@ -2,14 +2,24 @@
   "version": 2,
   "builds": [
     {
-      "src": "app.py",
-      "use": "@vercel/python"
+      "src": "estoque-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    },
+    {
+      "src": "estoque-app/main.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "estoque-app/main.py"
+    },
+    {
       "src": "/(.*)",
-      "dest": "app.py"
+      "dest": "estoque-frontend/build"
     }
   ]
 }
